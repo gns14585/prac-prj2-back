@@ -1,4 +1,4 @@
-package com.example.pracprj2back;
+package com.example.pracprj2back.controller;
 
 import com.example.pracprj2back.domain.Board;
 import com.example.pracprj2back.service.BoardService;
