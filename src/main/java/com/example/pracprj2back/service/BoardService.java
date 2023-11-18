@@ -38,4 +38,8 @@ public class BoardService {
         return mapper.selectAll();
 
     }
+
+    public Board get(Integer id) {
+        return mapper.selectById(id);
+    }
 }

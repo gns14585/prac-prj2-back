@@ -33,5 +33,12 @@ public class BoardController {
     public List<Board> list() {
         return service.boardList();
     }
+
+    // 넘어오는 주소가 axios.get("/api/board/id/" + id) 니까 뒤에있는 + id는 {id}로 받아줘야함
+    // url주소의 특정 바뀌는 값들을 넘겨받는거니까 @PathVariable 매개변수에 넣어줘야함.
+    @GetMapping("id/{id}")
+    public Board get(@PathVariable Integer id) {
+        return service.get(id);
+    }
 }
 
