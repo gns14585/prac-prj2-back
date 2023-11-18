@@ -18,6 +18,11 @@ public class BoardController {
 
     @PostMapping("add")
     public ResponseEntity add(@RequestBody Board board) {
+        // 글이 제대로 들어갔는지 검증
+        if (!service.validate(board)) { // 검증이 잘 안됐으면
+            return ResponseEntity.badRequest().build();
+        }
+
         if (service.save(board)) {
             return ResponseEntity.ok().build();
         } else {
