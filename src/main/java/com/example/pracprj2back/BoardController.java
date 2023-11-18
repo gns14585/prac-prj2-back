@@ -4,10 +4,9 @@ import com.example.pracprj2back.domain.Board;
 import com.example.pracprj2back.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,6 +17,7 @@ public class BoardController {
 
     @PostMapping("add")
     public ResponseEntity add(@RequestBody Board board) {
+
         // 글이 제대로 들어갔는지 검증
         if (!service.validate(board)) { // 검증이 잘 안됐으면
             return ResponseEntity.badRequest().build();
@@ -28,6 +28,11 @@ public class BoardController {
         } else {
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @GetMapping("list")
+    public List<Board> list() {
+        return service.boardList();
     }
 }
 
