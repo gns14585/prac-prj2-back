@@ -15,6 +15,7 @@ public class BoardService {
     private final BoardMapper mapper;
 
     public boolean save(Board board) {
+        // insert, update, delete 는 1개씩 데이터를 다루다 보니 boolean 리턴타입으로 == 1 로 처리
         return mapper.insert(board) == 1;
     }
 
@@ -41,5 +42,10 @@ public class BoardService {
 
     public Board get(Integer id) {
         return mapper.selectById(id);
+    }
+
+    public boolean remove(Integer id) {
+        // insert, update, delete 는 1개씩 데이터를 다루다 보니 boolean 리턴타입으로 == 1 로 처리
+        return mapper.deleteById(id) == 1;
     }
 }
