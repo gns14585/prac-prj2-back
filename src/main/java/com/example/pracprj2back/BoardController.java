@@ -43,11 +43,16 @@ public class BoardController {
 
     @DeleteMapping("remove/{id}")
     public ResponseEntity remove(@PathVariable Integer id) {
-        if (service.remove(id)) {
+        if (service.remove(id)) { // service.remove가 문제가 없다면 응답코드 ok (200)
             return ResponseEntity.ok().build();
         } else {
-            return ResponseEntity.internalServerError().build();
+            return ResponseEntity.internalServerError().build(); // service.remove가 문제가 있다면 응답코드 error(500)
         }
+    }
+
+    @PutMapping("edit")
+    public void edit(@RequestBody Board board) {
+        service.update(board);
     }
 }
 

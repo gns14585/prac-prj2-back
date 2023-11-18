@@ -48,4 +48,8 @@ public class BoardService {
         // insert, update, delete 는 1개씩 데이터를 다루다 보니 boolean 리턴타입으로 == 1 로 처리
         return mapper.deleteById(id) == 1;
     }
+
+    public boolean update(Board board) {
+        return mapper.update(board) == 1;
+    }
 }
