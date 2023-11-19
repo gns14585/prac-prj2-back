@@ -1,6 +1,5 @@
 package com.example.pracprj2back.service;
 
-import com.example.pracprj2back.controller.MemberController;
 import com.example.pracprj2back.domain.Member;
 import com.example.pracprj2back.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -14,5 +13,13 @@ public class MemberService {
 
     public void add(Member member) {
         mapper.insert(member);
+    }
+
+    public String getId(String id) {
+        return mapper.selectId(id);
+    }
+
+    public String getEmail(String email) {
+        return mapper.selectEmail(email);
     }
 }

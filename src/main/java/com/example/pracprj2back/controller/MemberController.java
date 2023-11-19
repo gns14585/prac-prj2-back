@@ -3,6 +3,7 @@ package com.example.pracprj2back.controller;
 import com.example.pracprj2back.domain.Member;
 import com.example.pracprj2back.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,7 +19,20 @@ public class MemberController {
     }
 
     @GetMapping(value = "check", params = "id")
-    public void checkId(String id) {
+    public ResponseEntity checkId(String id) {
+        if (service.getId(id) == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok().build();
+        }
+    }
 
+    @GetMapping(value = "check", params = "email")
+    public ResponseEntity checkEmail(String email) {
+        if (service.getEmail(email) == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok().build();
+        }
     }
 }
