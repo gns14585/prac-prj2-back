@@ -32,6 +32,9 @@ public class MemberService {
         if (member.getId() == null || member.getId().isBlank()) {
             return false;
         }
+        if (member.getNickName() == null || member.getNickName().isBlank()) {
+            return false;
+        }
         if (member.getEmail() == null || member.getEmail().isBlank()) {
             return false;
         }
@@ -55,5 +58,9 @@ public class MemberService {
 
     public boolean update(Member member) {
         return mapper.update(member) == 1;
+    }
+
+    public String getNickName(String nickName) {
+        return mapper.selectNickName(nickName);
     }
 }
