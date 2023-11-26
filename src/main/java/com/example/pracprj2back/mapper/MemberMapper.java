@@ -12,4 +12,6 @@ public interface MemberMapper {
             VALUES (#{id}, #{password}, #{email})
             """)
     int insert(Member member);
+
+
 }
